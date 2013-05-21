@@ -19,23 +19,19 @@ $anandLogoPath = "";
 
 //Assign the appropriate path for the file
 
-if ($currentFileName == "index.php") {
-	$indexClassActive = 'class = active';
-
-	$indexFilePath = "index.php";
-	$serviceFilePath = "phpPages/services.php";
-	$aboutUsFilePath = "phpPages/aboutUs.php";
-	$contactFilePath = "phpPages/contactUs.php";
-	$projectsFilePath = "phpPages/projects.php";
-	$anandLogoPath = "img/anandLogo.png";
-
-} else {
-	$indexFilePath = "../index.php";
+	$indexFilePath = "home.php";
 	$serviceFilePath = "services.php";
 	$aboutUsFilePath = "aboutUs.php";
 	$contactFilePath = "contactUs.php";
 	$projectsFilePath = "projects.php";
-	$anandLogoPath = "../img/anandLogo.png";
+	$anandLogoPath = "../../webroot/img/anandLogo.png";
+
+
+if ($currentFileName == "home.php") {
+	$indexClassActive = 'class = active';
+
+
+} else {
 
 	if ($currentFileName == "services.php") {
 		$serviceClassActive = 'class = active';

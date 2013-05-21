@@ -8,15 +8,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="../img/favicon.ico" />
-		<title> Contact Us </title>
-		<link rel="stylesheet" href="../css/normalize.css" />
-		<link rel="stylesheet" href="../css/foundation.css" />
-		<link rel="stylesheet" href="../css/mycss.css" />
+		<link rel="icon" type="image/png" href="../../webroot/img/favicon.ico" />
+		<title> Sustainability </title>
+		<link rel="stylesheet" href="../../webroot/css/normalize.css" />
+		<link rel="stylesheet" href="../../webroot/css/foundation.css" />
+		<link rel="stylesheet" href="../../webroot/css/mycss.css" />
 		<link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
-		<script src="../js/vendor/custom.modernizr.js"></script>
+		<script src="../../webroot/js/vendor/custom.modernizr.js"></script>
 
 	</head>
 	<body class="bodyAttr">
@@ -37,7 +37,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<div class="large-4 columns hide-for-small">
-					<img src="../img/contactUs.jpg" alt="image"/>
+					<img src="../../webroot/img/contactUs.jpg" alt="image"/>
 
 				</div>
 

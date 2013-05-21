@@ -8,15 +8,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="../img/favicon.ico" />
-		<title> Projects </title>
-		<link rel="stylesheet" href="../css/normalize.css" />
-		<link rel="stylesheet" href="../css/foundation.css" />
-		<link rel="stylesheet" href="../css/mycss.css" />
+		<link rel="icon" type="image/png" href="../../webroot/img/favicon.ico" />
+		<title> Sustainability </title>
+		<link rel="stylesheet" href="../../webroot/css/normalize.css" />
+		<link rel="stylesheet" href="../../webroot/css/foundation.css" />
+		<link rel="stylesheet" href="../../webroot/css/mycss.css" />
 		<link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Habibi' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
-		<script src="../js/vendor/custom.modernizr.js"></script>
+		<script src="../../webroot/js/vendor/custom.modernizr.js"></script>
 
 	</head>
 	<body class="bodyAttr">
@@ -39,7 +39,7 @@
 			<div class="large-12 columns">
 
 				<div class="large-4 columns hide-for-small">
-					<img class="mediumImage" src="../img/jbpPlant1.png" alt="image"/>
+					<img class="mediumImage" src="../../webroot/img/jbpPlant1.png" alt="image"/>
 
 				</div>
 
@@ -66,7 +66,7 @@
 						<div class="row">
 			<div class="large-12 columns">
 				<div class="large-4 columns hide-for-small">
-					<img class="mediumImage" src="../img/biometh.jpg" alt="image"/>
+					<img class="mediumImage" src="../../webroot/img/biometh.jpg" alt="image"/>
 
 				</div>
 					<div class="large-8 columns">
