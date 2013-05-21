@@ -1,0 +1,21 @@
+/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
+/* zurb.com */
+/* humanstxt.org */
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery, Orbit, Reveal
+  Software: Coda, Textmate, Git
+
+  
+  
+/*  
+The Model is the part of the application that handles the logic for the application data.
+Often model objects retrieve data (and store data) from a database.
+
+The View is the parts of the application that handles the display of the data.
+Most often the views are created from the model data.
+
+The Controller is the part of the application that handles user interaction.
+Typically controllers read data from a view, control user input, and send input data to the model.  
+*/

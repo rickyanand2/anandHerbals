@@ -1,0 +1,79 @@
+/* Change the color of HTML body */
+.bodyAttr {
+	background: #FFFFFF ;
+	
+}
+ 
+        
+/* Change the font */
+.googleFont {
+	font-family: 'Sanchez', serif;
+	}
+
+p {
+	font-family: 'Habibi', serif;
+	}
+
+
+.googleTopBarFont {
+	font-family: 'Montez', cursive;
+}
+
+
+
+
+.orbiImagetWidth {
+	
+	height:auto;
+	width:100%;
+	
+}
+
+
+.biggerImage {
+	
+	height:150%;
+	width:150%;
+}
+
+
+.mediumImage {
+	
+	height:15.625em;
+	width:18.75em;
+}
+
+
+.bannerImage {
+	height:13.375em;
+	width:50.00em;
+}
+
+/* Hide the navigation bar for orbit*/
+.orbit-container .orbit-timer .orbit-progress { 
+	background: transparent; 
+	
+	}
+	
+/* Hide side bars for orbit 
+.orbit-container .orbit-prev,
+  .orbit-container .orbit-next {
+  	background: transparent; 
+  	display: none;	
+  }
+*/  
+
+
+/* Footer class for website */
+.footer{
+	font-size: .8em;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
