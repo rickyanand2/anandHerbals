@@ -19,17 +19,15 @@ $anandLogoPath = "";
 
 //Assign the appropriate path for the file
 
-	$indexFilePath = "home.php";
-	$serviceFilePath = "services.php";
-	$aboutUsFilePath = "aboutUs.php";
-	$contactFilePath = "contactUs.php";
-	$projectsFilePath = "projects.php";
-	$anandLogoPath = "../../webroot/img/anandLogo.png";
-
+$indexFilePath = "home.php";
+$serviceFilePath = "services.php";
+$aboutUsFilePath = "aboutUs.php";
+$contactFilePath = "contactUs.php";
+$projectsFilePath = "projects.php";
+$anandLogoPath = "../../webroot/img/anandLogo.png";
 
 if ($currentFileName == "home.php") {
 	$indexClassActive = 'class = active';
-
 
 } else {
 
@@ -44,9 +42,6 @@ if ($currentFileName == "home.php") {
 
 	} elseif ($currentFileName == "aboutUs.php") {
 		$aboutUsClassActive = 'class = active';
-
-	} elseif ($currentFileName == "services.php") {
-		$serviceClassActive = 'class = active';
 
 	} elseif ($currentFileName == "contactUs.php") {
 		$contactClassActive = 'class = active';
@@ -107,6 +102,11 @@ if ($currentFileName == "home.php") {
 
 						</li>
 						<li class="divider"></li>
+						<li class="has-form">
+							<a href="login.php" class="button">Login</a>
+						</li>
+
+						<li class="divider"></li>
 						<li class="divider show-for-small"></li>
 					</ul>
 
@@ -143,4 +143,3 @@ if ($currentFileName == "home.php") {
 
 <!-- Page Navigation End -->
 
-		

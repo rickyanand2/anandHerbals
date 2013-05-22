@@ -1,3 +1,19 @@
+Study Mixins - SCSS
+
+http://www.phpeasystep.com/phptu/6.html
+
+http://www.9lessons.info/2009/09/php-login-page-example.html
+
+A few hints:
+– Using addslashes() for escaping is bad practice
+– Storing passwords unencrypted is bad practice
+– session_register() is deprecated
+– A valid location headers require a full URL
+– lock.php makes no sense. The existence of a username and / or user ID in the session is sufficient, 
+if the authentication was done properly. (Unless you want to check for every single request 
+if a user account has been disabled or deleted.)
+
+
 /* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
 /* zurb.com */
 /* humanstxt.org */
