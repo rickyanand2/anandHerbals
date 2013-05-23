@@ -37,7 +37,7 @@
 
 				<div class="large-8 columns">
 					<h6>Please login to know more about the processes involved. </h6>
-					<form>
+					<form  method="post" action="members.php">
 						<fieldset>
 							<legend>
 								Login
@@ -46,14 +46,14 @@
 							<div class="row">
 								<div class="large-6 columns">
 									<label>Username </label>
-									<input type="text" placeholder="large-6.columns">
+									<input type="text" id="username" name="username" placeholder="large-6.columns">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="large-6 columns">
 									<label>Password </label>
-									<input type="text" placeholder="large-6.columns">
+									<input type="password" name="password" id="password" placeholder="large-6.columns">
 									<br/>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 									<div class="row">
 										<div class="large-7 columns">
 											<button>
-												<a href="#" placeholder="large-3.columns" class="button"> Sign In</a>
+												<a href="#" placeholder="large-3.columns" class="button" > Sign In</a>
 											</button>
 										</div>
 										<div class="row collapse">

@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+
+require_once dirname(__FILE__)."/../../controller/sessionsController.php";
+
+echo "file is members.php <br/>";
+
+$sessionObj = new sessionsController;
+$sessionObj -> validateUser('rockstar', 'rrrrrrrrr');
+?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -22,61 +31,43 @@
 	<body class="bodyAttr">
 
 		<!-- Page Navigation start -->
-
 		<?php
 
 		/* Declare variables for this page */
-
 		$currentFileName = basename($_SERVER['PHP_SELF'], "");
-		?>
-
-		<?php include "navigationBar.php"
+		include "navigationBar.php";
 		?>
 
 		<!-- Page Navigation ends -->
 
 		<div class="row">
 			<div class="large-12 columns">
-
-				<div class="large-4 columns hide-for-small">
-					<img class="mediumImage" src="../../webroot/img/jbpPlant1.png" alt="image"/>
-
-				</div>
-
 				<div class="large-8 columns">
 
-					
-						<h5> RENEWABLE ENERGY POWER PROJECT (REPP)</h5>
-						<h6> CAPACITY – 1.2 MW : BASED ON DAIRY SOLID WASTE AT PARIYAT JABALPUR </h6>
+					<h5> WELCOME TO OUR MEMBERS AREA </h5>
 
-						<p>
-							Anand Consultants were incharge of the installation of the biggest Bio Gas Plant in Madhya Pradesh.
-							We carefully studied the site and shortlisted the first REPP (Renewable Energy Power Project) at Pariyat Jabalpur as being the most appropriate
-							and suitable to implement the concept of waste to energy and organic manure production.
+				</div>
+				<div class="large-2 large-offset-2 columns">
+					Enjoy your stay and look at our processes
+				</div>
 
-						</p>
-						<p>
-							The Madhya Pradesh state Govt. Renewable Energy Policy declared vide Gazzet Notification no. 513 date 17th Oct. 2006 was the driving force for the selection of the site.
-						</p>
+			</div>
+		</div>
 
-					</div>
-					</div>
-					</div>
-					
-						<div class="row">
+		<div class="row">
 			<div class="large-12 columns">
 				<div class="large-4 columns hide-for-small">
 					<img class="mediumImage" src="../../webroot/img/biometh.jpg" alt="image"/>
 
 				</div>
-					<div class="large-8 columns">
-						<h6>BIO-METHANIZATION AT PARIYAT JABALPUR </h6>
-						<p>	Bio-methanization Project involved treatment and recycle of solid and liquid waste into organic manure and to recover Biogas to produce electricity.
+				<div class="large-8 columns">
+					<h6>Process 1 </h6>
+					<p>
+						Bio-methanization Project involved treatment and recycle of solid and liquid waste into organic manure and to recover Biogas to produce electricity.
 						in addition to prevention of water pollution taking place at River Pariyat.
-						</p>
-					</div>
+					</p>
+				</div>
 
-			
 			</div>
 		</div>
 
@@ -104,4 +95,4 @@
 	</body>
 
 </html>
-
+>

@@ -8,52 +8,37 @@ $serviceClassActive = "";
 $aboutUsClassActive = "";
 $contactClassActive = "";
 $projectsClassActive = "";
+$memberClassActive = "";
 
-//Path for the files
-$indexFilePath = "";
-$serviceFilePath = "";
-$aboutUsFilePath = "";
-$contactFilePath = "";
-$projectsFilePath = "";
-$anandLogoPath = "";
-
-//Assign the appropriate path for the file
-
-$indexFilePath = "home.php";
-$serviceFilePath = "services.php";
-$aboutUsFilePath = "aboutUs.php";
-$contactFilePath = "contactUs.php";
-$projectsFilePath = "projects.php";
-$anandLogoPath = "../../webroot/img/anandLogo.png";
 
 if ($currentFileName == "home.php") {
 	$indexClassActive = 'class = active';
 
-} else {
+} elseif ($currentFileName == "services.php") {
+	$serviceClassActive = 'class = active';
 
-	if ($currentFileName == "services.php") {
-		$serviceClassActive = 'class = active';
+} elseif ($currentFileName == "services.php") {
+	$serviceClassActive = 'class = active';
 
-	} elseif ($currentFileName == "services.php") {
-		$serviceClassActive = 'class = active';
+} elseif ($currentFileName == "projects.php") {
+	$projectsClassActive = 'class = active';
 
-	} elseif ($currentFileName == "projects.php") {
-		$projectsClassActive = 'class = active';
+} elseif ($currentFileName == "aboutUs.php") {
+	$aboutUsClassActive = 'class = active';
 
-	} elseif ($currentFileName == "aboutUs.php") {
-		$aboutUsClassActive = 'class = active';
+} elseif ($currentFileName == "contactUs.php") {
+	$contactClassActive = 'class = active';
 
-	} elseif ($currentFileName == "contactUs.php") {
-		$contactClassActive = 'class = active';
-	}
-
+} elseif ($currentFileName == "members.php") {
+	$memberClassActive = 'class = active';
 }
+
 ?>
 
 <div class="row">
 	<div class="large-12 columns topShade">
 
-		<img src=<?php echo $anandLogoPath ?> alt="Anand Renewable Energy Consultancy"/>
+		<img src="../../webroot/img/anandLogo.png" alt="Anand Renewable Energy Consultancy"/>
 	</div>
 </div>
 
@@ -64,11 +49,11 @@ if ($currentFileName == "home.php") {
 				<ul class="title-area">
 					<!-- Title Area -->
 					<li class="name">
-						<h1 ><a href=<?php echo $indexFilePath; ?> >Sustainability</a></h1>
+						<h1 ><a href="home.php" >Sustainability</a></h1>
 					</li>
 					<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 					<li class="toggle-topbar menu-icon">
-						<a href=<?php echo $indexFilePath; ?> ><span>Menu</span></a>
+						<a href="home.php" ><span>Menu</span></a>
 					</li>
 				</ul>
 
@@ -77,33 +62,43 @@ if ($currentFileName == "home.php") {
 					<ul class="right googleFont">
 						<li class="divider"></li>
 						<li <?php echo $indexClassActive; ?> >
-							<a href=<?php echo $indexFilePath; ?> >Home</a>
+							<a href="home.php"> Home </a>
 						</li>
 
 						<li class="divider"></li>
 						<li <?php echo $projectsClassActive; ?> >
-							<a href=<?php echo $projectsFilePath; ?> >Projects</a>
+							<a href="projects.php">Projects</a>
 
 						</li>
 						<li class="divider"></li>
 						<li <?php echo $serviceClassActive; ?> >
-							<a href=<?php echo $serviceFilePath; ?>>Services</a>
+							<a href="services.php">Services</a>
 
 						</li>
+
+						<!-- To be configured   : Authorization -->
+						<?php // ?>
+						<li class="divider"></li>
+						<li <?php echo $memberClassActive; ?> >
+							<a href="members.php">Members Area</a>
+
+						</li>
+
 						<li class="divider"></li>
 						<li <?php echo $aboutUsClassActive; ?> >
-							<a href=<?php echo $aboutUsFilePath; ?> >About Us</a>
+							<a href="aboutUs.php" >About Us</a>
 
 						</li>
 
 						<li class="divider"></li>
 						<li <?php echo $contactClassActive; ?> >
-							<a href=<?php echo $contactFilePath; ?> >Contact Us</a>
+							<a href="contactUs.php" >Contact Us</a>
 
 						</li>
 						<li class="divider"></li>
 						<li class="has-form">
 							<a href="login.php" class="button">Login</a>
+							<a href="logout.php" class="button small alert">Logout</a>
 						</li>
 
 						<li class="divider"></li>

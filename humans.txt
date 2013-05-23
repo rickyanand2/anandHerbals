@@ -1,4 +1,11 @@
+Issues:
+ Login - Logout not to be displayed together
+
+
 Study Mixins - SCSS
+Secure PHP : http://www.phpeveryday.com/articles/1-2String-Validation-P783.html
+
+
 
 http://www.phpeasystep.com/phptu/6.html
 
