@@ -5,6 +5,12 @@ Issues:
 Study Mixins - SCSS
 Secure PHP : http://www.phpeveryday.com/articles/1-2String-Validation-P783.html
 
+MVC video tutorial before starting cakephp
+
+
+Reference:
+http://php.net/manual/en/function.dirname.php ~ [path of the file]
+
 
 
 http://www.phpeasystep.com/phptu/6.html

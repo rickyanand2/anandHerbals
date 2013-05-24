@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <?php
 
-require_once dirname(__FILE__)."/../../controller/sessionsController.php";
-
-echo "file is members.php <br/>";
-
-$sessionObj = new sessionsController;
-$sessionObj -> validateUser('rockstar', 'rrrrrrrrr');
 ?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->

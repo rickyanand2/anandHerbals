@@ -1,7 +1,9 @@
 <?php
-
+//Start a session
 echo "class is sessionController <br/>";
 require_once dirname(__FILE__) . "/../model/connectionDatabase.php";
+
+$errorClass = "";
 
 class SessionsController extends ConnectionDatabase {
 
@@ -17,65 +19,87 @@ class SessionsController extends ConnectionDatabase {
 	// Also sets the user values
 	public function validateUser($username = null, $password = null) {
 
-		//Connect to Mysql Database from parent class
-		parent::connectMyDatabase();
+		try {
 
-		// To protect MySQL injection (more detail about MySQL injection)
-		$username = stripslashes($username);
-		$password = stripslashes($password);
-		$username = mysql_real_escape_string($username);
-		$password = mysql_real_escape_string($password);
+			$loginArray = $this -> safeInjection($username, $password);
 
-		$sql = 'SELECT * FROM users WHERE username=\'' . $username . '\' and password=\'' . $password . '\'';
-		$result = mysql_query($sql);
-		$n = mysql_num_rows($q);
+			//Injection Safe Error output
+			print_r($loginArray);
 
-		echo "Username is " . $username . "<br/>";
-		echo "Password is " . $password . "<br/>";
-		echo "Number of SQL rows selected - " . $n . "<br/>";
+			$username = $loginArray[0];
+			$password = $loginArray[1];
 
-		if ($n > 0) {
-			//Values of these variable can now also be accessed by other local methods to this class
-			$this -> _username = $username;
-			$this -> _password = $password;
+			//Connect to Mysql Database from parent class
+			parent::connectMyDatabase();
 
-		} else {
-			echo "Pasangan username dan password yang Anda masukkan tidak cocok.<br/>";
+			$sql = 'SELECT * FROM users WHERE username=\'' . $username . '\' and password=\'' . $password . '\'';
+			$result = mysql_query($sql);
+			$n = mysql_num_rows($result);
+
+			echo "Username is " . $username . "<br/>";
+			echo "Password is " . $password . "<br/>";
+
+			if ($n == 1) {
+
+				/* Redirect to a different page in the current directory that was requested */
+				$host = $_SERVER['HTTP_HOST'];
+				$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+				$extra = '/footer.php';
+				header("Location: http://$host$uri/$extra");
+				exit ;
+
+				/*
+				 //Values of these variable can now also be accessed by other local methods to this class
+				 echo "Number of SQL rows selected: " . $n . "<br/>";
+				 $this -> _username = $username;
+				 $this -> _password = $password;
+
+				 //Get the SQL result as an array for sessions
+				 $sessionArray = mysql_fetch_array($result);
+
+				 //Display the session data
+				 print_r($sessionArray);
+
+				 //Register the name value into a session
+				 $_SESSION['uname'] = $sessionArray['username'];
+
+				 */
+			} else {
+				//echo "Username or password is not correct.<br/>";
+
+				global $errorClass;
+				$errorClass = "error";
+
+				/*
+				 $loginPath = dirname(__FILE__) . "../view/pages/login.php";
+				 //redirect to login page
+				 header("Location:$loginPath", TRUE, 302);
+				 */
+
+			}
+
+		} catch (Exception $e) {
+			echo 'Caught exception: ', $e -> getMessage(), "\n";
 		}
 
 	}
 
-	/*
+	/////////////////////// To get MD5 encryption and login be sql injection safe /////////////////////////
+	public function safeInjection($var1, $var2) {
+		$safe_username = $var1;
+		$safe_password = $var2;
 
-	 public function setUser
+		// To protect MySQL injection (more detail about MySQL injection)
+		$safe_username = stripslashes($safe_username);
+		$safe_password = stripslashes($safe_password);
+		$safe_username = mysql_real_escape_string($safe_username);
+		$safe_password = mysql_real_escape_string($safe_password);
+		$safe_password = md5($safe_password);
 
-	 */
+		return array($safe_username, $safe_password);
 
-	/*
-	 * // username and password sent from form
-	 $myusername=$_POST['myusername'];
-	 $mypassword=$_POST['mypassword'];
+	}
 
-	 // Mysql_num_row is counting table row
-	 $count=mysql_num_rows($result);
-
-	 // If result matched $myusername and $mypassword, table row must be 1 row
-
-	 if($count==1){
-
-	 // Register $myusername, $mypassword and redirect to file "login_success.php"
-	 session_register("myusername");
-	 session_register("mypassword");
-	 header("location:login_success.php");
-	 }
-	 else {
-	 echo "Wrong Username or Password";
-	 }
-	 *
-	 *
-	 **/
-
-	//$q = mysql_query("SELECT * FROM user WHERE uname='".$uname."' and password=md5('".$password."')");
 	/*  ------------------------------------------ End of Class -------------------------------------------------  */
 }
 ?>

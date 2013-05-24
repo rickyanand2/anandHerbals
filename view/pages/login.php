@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<?php
+//Start a session
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	//Get username and password
+	$getUsername = $_POST["username"];
+	$getPassword = $_POST["password"];
+
+	echo "Username in form: " . $getUsername . "<br/>";
+	echo "Password in form: " . $getPassword . "<br/>";
+
+	require_once dirname(__FILE__) . "/../../controller/sessionsController.php";
+
+	$sessionObject = new SessionsController;
+	$sessionObject -> secure_session();
+	$sessionObject -> validateUser($getUsername, $getPassword);
+
+	//Check the if username is set
+	echo "Error class variable is ".$errorClass;
+	
+}
+
+?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -27,6 +52,7 @@
 				<img src="../../webroot/img/anandLogo.png" alt="Anand Renewable Energy Consultancy"/>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="large-12 columns">
 				<div class="small-4 columns hide-for-small">
@@ -37,33 +63,61 @@
 
 				<div class="large-8 columns">
 					<h6>Please login to know more about the processes involved. </h6>
-					<form  method="post" action="members.php">
+					<form  method="post" action="">
 						<fieldset>
 							<legend>
 								Login
 							</legend>
 
+							<?php
+							// If session is not created
+							if($errorClass != "error") :
+							?>
 							<div class="row">
 								<div class="large-6 columns">
 									<label>Username </label>
-									<input type="text" id="username" name="username" placeholder="large-6.columns">
+									<input type="text" id="username" name="username" >
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="large-6 columns">
 									<label>Password </label>
-									<input type="password" name="password" id="password" placeholder="large-6.columns">
+									<input type="password" name="password" id="password" >
 									<br/>
 								</div>
 							</div>
+
+							<?php else: ?>
+
+							<!-- Username Error Section							-->
+							<div class="row">
+								<div class="large-6 columns error">
+									<label>Username </label>
+									<input type="text" id="username" name="username" >
+									<small class="error">Invalid entry</small>
+								</div>
+							</div>
+
+							<!-- Password Error Section -->
+							<div class="row">
+								<div class="large-6 columns error">
+									<label>Password </label>
+									<input type="password" name="password" id="password" >
+									<small class="error">Invalid entry</small>
+									<br/>
+								</div>
+							</div>
+
+							<?php
+							endif;
+							?>
+
 							<div class="row">
 								<div class="large-6 columns">
 									<div class="row">
 										<div class="large-7 columns">
-											<button>
-												<a href="#" placeholder="large-3.columns" class="button" > Sign In</a>
-											</button>
+											<input class="button" type="submit" value="Sign In">
 										</div>
 										<div class="row collapse">
 											<div class="large-5 columns">
@@ -75,29 +129,6 @@
 								</div>
 							</div>
 
-							<!-- Rest of the form for email and Textbox area
-
-							<div class="row">
-							<div class="large-4 columns">
-							<div class="row collapse">
-							<label>Input Label</label>
-							<div class="small-9 columns">
-							<input type="text" placeholder="small-9.columns">
-							</div>
-							<div class="small-3 columns">
-							<span class="postfix">.com</span>
-							</div>
-							</div>
-							</div>
-							</div>
-
-							<div class="row">
-							<div class="large-12 columns">
-							<label>Textarea Label</label>
-							<textarea placeholder="small-12.columns"></textarea>
-							</div>
-							</div>
-							-->
 						</fieldset>
 					</form>
 
