@@ -1,6 +1,6 @@
 
         <!-- Start footer -->
-
+<footer>
         <div class="row">
             <div class="large-12 columns footer">
                 <hr>
@@ -12,5 +12,5 @@
 
             </div>
         </div>
-
+</footer>
         <!-- End Footer -->

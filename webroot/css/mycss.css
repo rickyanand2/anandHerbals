@@ -20,7 +20,19 @@ p {
 }
 
 
+/* Smaller font */
+ .smallFont {
+	
+	font-size: 0.65em;
+}
 
+
+ .errorText {
+ 	
+ 	font-size: 0.7.1em;
+ 	color: red;
+ 	font-style: italic;
+ }
 
 .orbiImagetWidth {
 	
@@ -71,6 +83,15 @@ p {
 }
 
 
+
+
+/* Validation CSS */
+.clear{
+	clear: both;
+	height: 0;
+	visibility: hidden;
+	display: block;
+}
 
 
 

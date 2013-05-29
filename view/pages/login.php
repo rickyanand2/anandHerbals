@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <?php
+
+require_once dirname(__FILE__) . "/../../controller/sessionsController.php";
+
 //Start a session
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//Get username and password
+$getUsername = $_POST["username"];
+$getPassword = $_POST["password"];
 
-	//Get username and password
-	$getUsername = $_POST["username"];
-	$getPassword = $_POST["password"];
+echo "Username is " . $getUsername;
+echo "Password is " . $getPassword;
 
-	echo "Username in form: " . $getUsername . "<br/>";
-	echo "Password in form: " . $getPassword . "<br/>";
-
-	require_once dirname(__FILE__) . "/../../controller/sessionsController.php";
+if ($getUsername != null && $getPassword != null) {
 
 	$sessionObject = new SessionsController;
-	$sessionObject -> secure_session();
 	$sessionObject -> validateUser($getUsername, $getPassword);
 
-	//Check the if username is set
-	echo "Error class variable is ".$errorClass;
-	
+	$formError = $_SESSION['temp'];
 }
-
 ?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -70,13 +67,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							</legend>
 
 							<?php
-							// If session is not created
-							if($errorClass != "error") :
+							//if (!isset($_SESSION['temp'])) :
+							if($formError != 'error') :
+
 							?>
 							<div class="row">
 								<div class="large-6 columns">
 									<label>Username </label>
-									<input type="text" id="username" name="username" >
+									<input type="text" id="username" name="username" autofocus>
 								</div>
 							</div>
 
@@ -88,13 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								</div>
 							</div>
 
-							<?php else: ?>
+							<?php else : ?>
 
 							<!-- Username Error Section							-->
 							<div class="row">
 								<div class="large-6 columns error">
 									<label>Username </label>
-									<input type="text" id="username" name="username" >
+									<input type="text" id="username" name="username" autofocus>
 									<small class="error">Invalid entry</small>
 								</div>
 							</div>
@@ -109,8 +107,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								</div>
 							</div>
 
-							<?php
+							<?php 
 							endif;
+								//Unset the variable for next time
+							if(isset($formError)){
+								unset($formError);
+							}
 							?>
 
 							<div class="row">

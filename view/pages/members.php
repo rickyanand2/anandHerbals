@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <?php
 
+session_start();
+
+//Redirect the page back to login if session variable is not set
+$user_check = $_SESSION['uname'];
+
+if (!isset($user_check)) {
+
+	$host = $_SERVER['HTTP_HOST'];
+	$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'login.php';
+
+	header("Location: http://$host$uri/$extra");
+	exit ;
+}	
+
+
 ?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -27,9 +43,9 @@
 		<!-- Page Navigation start -->
 		<?php
 
-		/* Declare variables for this page */
-		$currentFileName = basename($_SERVER['PHP_SELF'], "");
-		include "navigationBar.php";
+/* Declare variables for this page */
+$currentFileName = basename($_SERVER['PHP_SELF'], "");
+include "navigationBar.php";
 		?>
 
 		<!-- Page Navigation ends -->
@@ -89,4 +105,3 @@
 	</body>
 
 </html>
->

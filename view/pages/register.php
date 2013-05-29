@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -22,124 +25,138 @@
 	<body class="bodyAttr">
 
 		<div class="row">
-			<div class="large-12 columns topShade">
+			<div class="small-12 columns topShade">
 
 				<img src="../../webroot/img/anandLogo.png" alt="Anand Renewable Energy Consultancy"/>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="large-12 columns">
+			<div class="small-12 columns">
 
-				<h6>Please provide the following details:</h6>
-				<form>
+				<form action="login.php" id="regForm">
 					<fieldset>
 						<legend>
-							Registration
+							Registration Form
 						</legend>
 
 						<div class="row">
-							<div class="small-6">
-								<div class="row">
-									<div class="small-3 columns">
-										<label for="fname" class="right inline">First Name</label>
-									</div>
-									<div class="small-9 columns">
-										<input type="text" id="fname" placeholder="Inline Text Input">
-									</div>
-								</div>
+							<div class="small-4 columns">
+								<label>First Name</label>
+								<input type="text" id="fname" name="fname" placeholder="Please enter your first name" autofocus>
 							</div>
+							<div class="small-4 columns">
+								<label>Last Name</label>
+								<input type="text" id="lname" name="lname" placeholder="Please enter your last name">
+							</div>
+							<div class="large-4 columns">
+								<label>Username </label>
+								<span id="unameInfo" class="left inline errorText"> 
+								</span>
+
+								<input type="text" id="uname" name="uname"
+
+								<?php
+								// Set the value as placeholder or actual entered value if username is entered
+								//	if (!@$_REQUEST['uname']) {
+									
+									 echo "placeholder='Valid a-z_-.'";
+							
+								//} else {
+									//echo "value= " . @$_REQUEST['uname'];
+								//}
+								?>
+
+								>
+
+							</div>
+
 						</div>
 
 						<div class="row">
-							<div class="small-6">
-								<div class="row">
-									<div class="small-3 columns">
-										<label for="lname" class="right inline">Last Name</label>
-									</div>
-									<div class="small-9 columns">
-										<input type="text" id="lname" placeholder="Inline Text Input">
-									</div>
-								</div>
+							<div class="small-4 columns">
+								<label>Password </label>
+								<span id="passInfo" class="left inline errorText"> 
+								</span>
+
+								<input type="password" id="pass" name="pass" placeholder="Enter your password">
 							</div>
+
+							<div class="small-4 columns">
+								<label>Confirm Password </label>
+								<span id="cpassInfo" class="left inline errorText"> 
+								</span>
+
+								<input type="password" id="cpass" name="cpass" placeholder="Enter your password again">
+							</div>
+
+							<div class="small-4 columns">
+								<label>Email Address </label>
+								<span id="emailInfo" class="left inline errorText"> 
+								</span>
+
+								<input type="email" id="email" name="email" placeholder="abc@website.com">
+							</div>
+
 						</div>
 
 						<div class="row">
-							<div class="small-6">
-								<div class="row">
-									<div class="small-3 columns">
-										<label for="email" class="right inline">Email</label>
-									</div>
-									<div class="small-9 columns">
-										<input type="text" id="email" placeholder="Inline Text Input">
-									</div>
-								</div>
+
+							<div class="small-8 columns">
+								<label>Business Address</label>
+								<textarea id="adress" name="adress" placeholder="Full address of your business"></textarea>
 							</div>
+
 						</div>
 
 						<div class="row">
-							<div class="small-6">
-								<div class="row">
-									<div class="small-3 columns">
-										<label for="details" class="right inline">Contact Details</label>
-									</div>
-									<div class="small-9 columns">
-										<textarea id="details" placeholder="Inline Text Input"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="large-8 columns">
+							<div class="small-12 columns">
+								<label>Comments</label>
+								<textarea id="comments" name="comments"  placeholder="Please enter any feedback/Comments/Enquiry over here"></textarea>
 								<br/>
-								<br/>
-								<label for="checkbox1">
-									<input type="checkbox" id="checkbox1">
-									<span class="custom checkbox"></span> I accept the terms and conditions of anand consultancy group. </label>
-								<br/>
 							</div>
+
 						</div>
 
 						<div class="row">
-							<div class="large-6 columns">
-								<div class="row">
-									<div class="large-7 columns">
-										<button>
-											<a href="#" placeholder="large-3.columns" class="button"> Submit</a>
-										</button>
-									</div>
+							<div class="small-8 small-centered  columns">
+								<textarea readonly="true"  class="smallFont">
 
-								</div>
+									<?php
+									include "Terms_conditions.txt";
+ 									?>
+
+								</textarea>																																																																																																
+									
+
+
 							</div>
-						</div>
 
-						<!-- Rest of the form for email and Textbox area
-
-						<div class="row">
-						<div class="large-4 columns">
-						<div class="row collapse">
-						<label>Input Label</label>
-						<div class="small-9 columns">
-						<input type="text" placeholder="small-9.columns">
-						</div>
-						<div class="small-3 columns">
-						<span class="postfix">.com</span>
-						</div>
-						</div>
-						</div>
 						</div>
 
 						<div class="row">
-						<div class="large-12 columns">
-						<label>Textarea Label</label>
-						<textarea placeholder="small-12.columns"></textarea>
+							<div class="small-8 small-centered  columns">
+
+								<input type="checkbox" id="agreement" >
+								I accept the terms and conditions of Anand Consultancy Group.
+
+							</div>
+
 						</div>
+
+						<div class="row">
+							<div class="small-2 small-centered  columns">
+								<br/>
+								<a href="#" class="button"> Submit </a>
+
+							</div>
+
 						</div>
-						-->
+
 					</fieldset>
 				</form>
 
+				<!-- End of Registration form -->
 			</div>
 		</div>
 
@@ -147,18 +164,40 @@
 
 		<!-- Check for Zepto support, load jQuery if necessary -->
 		<script>
-			document.write('<script src=' + ('__proto__' in {} ? '../js/vendor/zepto' : '../js/vendor/jquery') + '.js><\/script>')
+			document.write('<script src=' + ('__proto__' in {} ? '../../webroot/js/vendor/zepto' : '../js/vendor/jquery') + '.js><\/script>')
 		</script>
 
 		<!-- All javascript plugins -->
-		<script src="../js/foundation.min.js"></script>
+		<script src="../../webroot/js/foundation.min.js"></script>
 
-		<!-- Activate all plugins -->
-		<script>
-			$(document).foundation('topbar', {
-				stickyClass : 'sticky',
+		<script src="../../webroot/js/validation.js">
+		
+			/* $(document).ready(function() {
+				var validateUsername = $('#validateUsername');
+				$('#uname').keyup(function() {
+					var t = this;
+					if (this.value != this.lastValue) {
+						if (this.timer)
+							clearTimeout(this.timer);
+							validateUsername.removeClass('error').html('<img src="../../webroot/img/ajax-loader.gif" height="16" width="16" /> checking availability...');
 
+						this.timer = setTimeout(function() {
+							$.ajax({
+								url : 'ajax-validation.php',
+								data : 'action=check_username&username=' + t.value,
+								dataType : 'json',
+								type : 'post',
+								success : function(j) {
+									validateUsername.html(j.msg);
+								}
+							});
+						}, 200);
+
+						this.lastValue = this.value;
+					}
+				});
 			});
+		*/
 		</script>
 
 		<?php

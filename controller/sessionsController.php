@@ -1,9 +1,11 @@
 <?php
 //Start a session
+session_start();
 echo "class is sessionController <br/>";
 require_once dirname(__FILE__) . "/../model/connectionDatabase.php";
 
-$errorClass = "";
+echo "string";
+$errorVar = "error";
 
 class SessionsController extends ConnectionDatabase {
 
@@ -23,7 +25,6 @@ class SessionsController extends ConnectionDatabase {
 
 			$loginArray = $this -> safeInjection($username, $password);
 
-			//Injection Safe Error output
 			print_r($loginArray);
 
 			$username = $loginArray[0];
@@ -40,41 +41,33 @@ class SessionsController extends ConnectionDatabase {
 			echo "Password is " . $password . "<br/>";
 
 			if ($n == 1) {
+				//Values of these variable can now also be accessed by other local methods to this class
+				echo "Number of SQL rows selected: " . $n . "<br/>";
+				$this -> _username = $username;
+				$this -> _password = $password;
 
-				/* Redirect to a different page in the current directory that was requested */
-				$host = $_SERVER['HTTP_HOST'];
-				$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				$extra = '/footer.php';
-				header("Location: http://$host$uri/$extra");
-				exit ;
+				//Unset session variable to register user session
+				session_unset();
 
-				/*
-				 //Values of these variable can now also be accessed by other local methods to this class
-				 echo "Number of SQL rows selected: " . $n . "<br/>";
-				 $this -> _username = $username;
-				 $this -> _password = $password;
+				//Get the SQL result as an array for sessions
+				$sessionArray = mysql_fetch_array($result);
+				print_r($sessionArray);
+				//Register the name value into a session
+				$_SESSION['uname'] = $sessionArray['username'];
 
-				 //Get the SQL result as an array for sessions
-				 $sessionArray = mysql_fetch_array($result);
+				//Redirect to Members Page
+				$this -> redirectToMembers();
 
-				 //Display the session data
-				 print_r($sessionArray);
-
-				 //Register the name value into a session
-				 $_SESSION['uname'] = $sessionArray['username'];
-
-				 */
 			} else {
 				//echo "Username or password is not correct.<br/>";
 
-				global $errorClass;
-				$errorClass = "error";
+				global $errorVar;
 
-				/*
-				 $loginPath = dirname(__FILE__) . "../view/pages/login.php";
-				 //redirect to login page
-				 header("Location:$loginPath", TRUE, 302);
-				 */
+				//Unset the variable
+				unset($errorVar);
+				$errorVar = "error";
+
+				$_SESSION['temp'] = $errorVar;
 
 			}
 
@@ -99,6 +92,22 @@ class SessionsController extends ConnectionDatabase {
 		return array($safe_username, $safe_password);
 
 	}
+
+	////////////////// Redirect Functions ////////////////////////////////////////////////////////////////////
+	public function redirectToMembers() {
+
+		$host = $_SERVER['HTTP_HOST'];
+		$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$extra = 'members.php';
+
+		header("Location: http://$host$uri/$extra");
+
+		//Echo "Location: http://$host$uri/$extra";
+
+		exit ;
+	}
+
+
 
 	/*  ------------------------------------------ End of Class -------------------------------------------------  */
 }
