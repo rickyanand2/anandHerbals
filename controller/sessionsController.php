@@ -1,10 +1,7 @@
 <?php
 //Start a session
 session_start();
-echo "class is sessionController <br/>";
 require_once dirname(__FILE__) . "/../model/connectionDatabase.php";
-
-echo "string";
 $errorVar = "error";
 
 class SessionsController extends ConnectionDatabase {

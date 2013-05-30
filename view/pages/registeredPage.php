@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@ session_start();
 					<h3>Thank you for registering with Anand Consultants.</h3>
 
 					<p>
-						Please <a href="login.php"> Login </a>
+						Please <a href="login.php"> Login </a> to access the Members area.
 					<p>
 
 				</div>

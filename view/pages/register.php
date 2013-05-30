@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <?php
+//Start a session
 session_start();
+
+if (isset($_POST['submit'])) {
+	require_once dirname(__FILE__) . "/../../model/serverValidation.php";
+
+	//Get all fields for validation and processing
+	$getRegUname = $_POST["uname"];
+	$getRegFname = $_POST["fname"];
+	$getRegLname = $_POST["lname"];
+	$getRegPass = md5($_POST["pass"]);
+	$getRegCpass = md5($_POST["cpass"]);
+	$getRegEmail = $_POST["email"];
+	$getRegaddress = $_POST["address"];
+	$getRegComments = $_POST["comments"];
+	$getRegAgreement = $_POST["agreement"];
+
+	// Create an object
+	$validate = new ServerValidation;
+
+	// Call the function
+	$validate -> checkPostData($getRegUname, $getRegFname, $getRegLname, $getRegPass, $getRegCpass, $getRegEmail, $getRegaddress, $getRegComments, $getRegAgreement);
+	
+	$validationErrorMessage = $validate::$errorMessage;
+	$validationErrorCode = $validate::$errorCode;
+}
 ?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -33,8 +58,15 @@ session_start();
 
 		<div class="row">
 			<div class="small-12 columns">
-
-				<form action="login.php" id="regForm">
+			<!-- Display any server side validation errors -->
+			<?php 
+				if($validationErrorCode != "0"){
+						
+					echo "<p class='errorText'>$validationErrorMessage</p>";
+				}
+			
+			?>
+				<form action="" id="regForm" method="post">
 					<fieldset>
 						<legend>
 							Registration Form
@@ -43,28 +75,51 @@ session_start();
 						<div class="row">
 							<div class="small-4 columns">
 								<label>First Name</label>
-								<input type="text" id="fname" name="fname" placeholder="Please enter your first name" autofocus>
+								<input type="text" id="fname" name="fname"  autofocus
+								<?php
+								if (!@$_REQUEST['fname']) {
+
+									echo "placeholder='Please enter your first name'";
+
+								} else {
+									echo "value= " . @$_REQUEST['fname'];
+								}
+								?>
+
+								>
+
 							</div>
 							<div class="small-4 columns">
 								<label>Last Name</label>
-								<input type="text" id="lname" name="lname" placeholder="Please enter your last name">
+								<input type="text" id="lname" name="lname"
+								<?php
+								if (!@$_REQUEST['lname']) {
+
+									echo "placeholder='Please enter your last name'";
+
+								} else {
+									echo "value= " . @$_REQUEST['lname'];
+								}
+								?>
+
+								>
 							</div>
+
 							<div class="large-4 columns">
 								<label>Username </label>
-								<span id="unameInfo" class="left inline errorText"> 
-								</span>
+								<span id="unameInfo" class="left inline errorText"> </span>
 
 								<input type="text" id="uname" name="uname"
 
 								<?php
 								// Set the value as placeholder or actual entered value if username is entered
-								//	if (!@$_REQUEST['uname']) {
-									
-									 echo "placeholder='Valid a-z_-.'";
-							
-								//} else {
-									//echo "value= " . @$_REQUEST['uname'];
-								//}
+								if (!@$_REQUEST['uname']) {
+
+									echo "placeholder='Valid a-z_-.'";
+
+								} else {
+									echo "value= " . @$_REQUEST['uname'];
+								}
 								?>
 
 								>
@@ -76,26 +131,55 @@ session_start();
 						<div class="row">
 							<div class="small-4 columns">
 								<label>Password </label>
-								<span id="passInfo" class="left inline errorText"> 
-								</span>
+								<span id="passInfo" class="left inline errorText"> </span>
 
-								<input type="password" id="pass" name="pass" placeholder="Enter your password">
+								<input type="password" id="pass" name="pass"
+								<?php
+								if (!@$_REQUEST['pass']) {
+
+									echo "placeholder='Enter your Password'";
+
+								} else {
+									echo "value= " . @$_REQUEST['pass'];
+								}
+								?>
+
+								>
 							</div>
 
 							<div class="small-4 columns">
 								<label>Confirm Password </label>
-								<span id="cpassInfo" class="left inline errorText"> 
-								</span>
+								<span id="cpassInfo" class="left inline errorText"> </span>
 
-								<input type="password" id="cpass" name="cpass" placeholder="Enter your password again">
+								<input type="password" id="cpass" name="cpass"
+								<?php
+								if (!@$_REQUEST['cpass']) {
+
+									echo "placeholder='Enter your Password again'";
+
+								} else {
+									echo "value= " . @$_REQUEST['cpass'];
+								}
+								?>
+
+								>
 							</div>
 
 							<div class="small-4 columns">
 								<label>Email Address </label>
-								<span id="emailInfo" class="left inline errorText"> 
-								</span>
+								<span id="emailInfo" class="left inline errorText"> </span>
 
-								<input type="email" id="email" name="email" placeholder="abc@website.com">
+								<input type="email" id="email" name="email"
+								<?php
+								if (!@$_REQUEST['email']) {
+
+									echo "placeholder='abc@website.com'";
+
+								} else {
+									echo "value= " . @$_REQUEST['email'];
+								}
+								?>
+								>
 							</div>
 
 						</div>
@@ -104,7 +188,15 @@ session_start();
 
 							<div class="small-8 columns">
 								<label>Business Address</label>
-								<textarea id="adress" name="adress" placeholder="Full address of your business"></textarea>
+								<textarea id="address" name="address" placeholder='Full address of your business' ><?php
+								if (!@$_REQUEST['address']) {
+									$temp = 1;
+								} else
+									echo @$_REQUEST['address'];
+								?>
+								
+									
+								</textarea>
 							</div>
 
 						</div>
@@ -112,7 +204,14 @@ session_start();
 						<div class="row">
 							<div class="small-12 columns">
 								<label>Comments</label>
-								<textarea id="comments" name="comments"  placeholder="Please enter any feedback/Comments/Enquiry over here"></textarea>
+								<textarea id="comments" name="comments" placeholder='Please enter any feedback/Comments/Enquiry over here'><?php
+								if (!@$_REQUEST['comments']) {
+									$temp = 1;
+								} else
+									echo @$_REQUEST['comments'];
+								?>
+									
+								</textarea>
 								<br/>
 							</div>
 
@@ -120,14 +219,18 @@ session_start();
 
 						<div class="row">
 							<div class="small-8 small-centered  columns">
+								<!-- Display the terms and conditions -->
 								<textarea readonly="true"  class="smallFont">
-
+								
 									<?php
 									include "Terms_conditions.txt";
  									?>
 
-								</textarea>																																																																																																
+								</textarea>																																																																																																																								
 									
+
+
+
 
 
 							</div>
@@ -137,7 +240,7 @@ session_start();
 						<div class="row">
 							<div class="small-8 small-centered  columns">
 
-								<input type="checkbox" id="agreement" >
+								<input type="checkbox" id="agreement" name="agreement">
 								I accept the terms and conditions of Anand Consultancy Group.
 
 							</div>
@@ -147,7 +250,7 @@ session_start();
 						<div class="row">
 							<div class="small-2 small-centered  columns">
 								<br/>
-								<a href="#" class="button"> Submit </a>
+								<input type="submit" value="Submit" name="submit"  class="small button">
 
 							</div>
 
@@ -170,36 +273,9 @@ session_start();
 		<!-- All javascript plugins -->
 		<script src="../../webroot/js/foundation.min.js"></script>
 
-		<script src="../../webroot/js/validation.js">
-		
-			/* $(document).ready(function() {
-				var validateUsername = $('#validateUsername');
-				$('#uname').keyup(function() {
-					var t = this;
-					if (this.value != this.lastValue) {
-						if (this.timer)
-							clearTimeout(this.timer);
-							validateUsername.removeClass('error').html('<img src="../../webroot/img/ajax-loader.gif" height="16" width="16" /> checking availability...');
-
-						this.timer = setTimeout(function() {
-							$.ajax({
-								url : 'ajax-validation.php',
-								data : 'action=check_username&username=' + t.value,
-								dataType : 'json',
-								type : 'post',
-								success : function(j) {
-									validateUsername.html(j.msg);
-								}
-							});
-						}, 200);
-
-						this.lastValue = this.value;
-					}
-				});
-			});
-		*/
-		</script>
-
+		<!-- Javascript Validation -->
+		<script src="../../webroot/js/validation.js"></script>
+ 	
 		<?php
 		include ('footer.php');
 		?>
