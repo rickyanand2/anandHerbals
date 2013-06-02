@@ -72,7 +72,7 @@
 						<br/>
 
 					</div>
-
+<!--
 					<h5>Ricky Anand</h5>
 					<p>
 						Unit 7, 6-8 Avondale Road
@@ -86,6 +86,7 @@
 						<br/>
 						<strong>Email:</strong> rickyanand2@gmail.com
 					</p>
+-->					
 				</div>
 			</div>
 		</div>

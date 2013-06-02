@@ -10,9 +10,6 @@ session_start();
 $getUsername = $_POST["username"];
 $getPassword = $_POST["password"];
 
-echo "Username is " . $getUsername;
-echo "Password is " . $getPassword;
-
 if ($getUsername != null && $getPassword != null) {
 
 	$sessionObject = new SessionsController;

@@ -22,8 +22,6 @@ class SessionsController extends ConnectionDatabase {
 
 			$loginArray = $this -> safeInjection($username, $password);
 
-			print_r($loginArray);
-
 			$username = $loginArray[0];
 			$password = $loginArray[1];
 
@@ -34,8 +32,6 @@ class SessionsController extends ConnectionDatabase {
 			$result = mysql_query($sql);
 			$n = mysql_num_rows($result);
 
-			echo "Username is " . $username . "<br/>";
-			echo "Password is " . $password . "<br/>";
 
 			if ($n == 1) {
 				//Values of these variable can now also be accessed by other local methods to this class

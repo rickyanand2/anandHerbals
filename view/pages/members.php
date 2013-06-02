@@ -14,9 +14,7 @@ if (!isset($user_check)) {
 
 	header("Location: http://$host$uri/$extra");
 	exit ;
-}	
-
-
+}
 ?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -43,42 +41,89 @@ if (!isset($user_check)) {
 		<!-- Page Navigation start -->
 		<?php
 
-/* Declare variables for this page */
-$currentFileName = basename($_SERVER['PHP_SELF'], "");
-include "navigationBar.php";
+		/* Declare variables for this page */
+		$currentFileName = basename($_SERVER['PHP_SELF'], "");
+		include "navigationBar.php";
 		?>
 
 		<!-- Page Navigation ends -->
 
 		<div class="row">
-			<div class="large-12 columns">
-				<div class="large-8 columns">
+			<div class="small-12 columns">
 
-					<h5> WELCOME TO OUR MEMBERS AREA </h5>
+				<p>
+					<h5> Welcome to our member's area</h5>
+					<?php echo $user_check; ?>
+				</p>
 
-				</div>
-				<div class="large-2 large-offset-2 columns">
-					Enjoy your stay and look at our processes
-				</div>
-
+				<h3>Information:</h3>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="large-12 columns">
-				<div class="large-4 columns hide-for-small">
-					<img class="mediumImage" src="../../webroot/img/biometh.jpg" alt="image"/>
+
+			<!-- Main Content Section -->
+			<!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+			<div class="large-9 push-3 columns">
+
+				<div class="row">
+					<div class="large-12 columns hide-for-small">
+						<img src="../../webroot/img/chartbiogas.jpg" alt="chart"/>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<h3>What is a Biodigester?</h3>
+
+						<p>
+							A device that mimics the natural decay process of organic matter
+							Biogas is produced from anaerobic decay (decay that occurs without oxygen)
+						</p>
+
+						<h3>Anaerobic Digestion in a Biodigester</h3>
+						<p>
+							Digester is fed with a mixture of water and waste called a slurry
+							Daily fresh slurry is added, displacing previous days load that bacteria have started to
+							digest
+							First, digestible organic matter is broken down by acid-producing bacteria
+							By-products are then broken down by methane-producing bacteria
+						</p>
+					</div>
 
 				</div>
-				<div class="large-8 columns">
-					<h6>Process 1 </h6>
-					<p>
-						Bio-methanization Project involved treatment and recycle of solid and liquid waste into organic manure and to recover Biogas to produce electricity.
-						in addition to prevention of water pollution taking place at River Pariyat.
-					</p>
-				</div>
+			</div>
+
+			<!-- Nav Sidebar -->
+			<!-- This is source ordered to be pulled to the left on larger screens -->
+			<div class="large-3 pull-9 columns">
+
+				<ul class="side-nav">
+					<li>
+						<a href="#">BioGas</a>
+					</li>
+					<li>
+						<a href="#">Section 2</a>
+					</li>
+					<li>
+						<a href="#">Section 3</a>
+					</li>
+					<li>
+						<a href="#">Section 4</a>
+					</li>
+					<li>
+						<a href="#">Section 5</a>
+					</li>
+					<li>
+						<a href="#">Section 6</a>
+					</li>
+				</ul>
+
+				<p><img src="http://placehold.it/320x240&text=Ad" />
+				</p>
 
 			</div>
+
 		</div>
 
 		<!-- End Content for the page -->

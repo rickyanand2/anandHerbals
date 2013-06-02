@@ -1,6 +1,7 @@
 <!-- Page Navigation start -->
 
 <?php
+session_start();
 //inherit $currentFileName from the page this file is being called from
 
 $indexClassActive = "";
@@ -9,7 +10,6 @@ $aboutUsClassActive = "";
 $contactClassActive = "";
 $projectsClassActive = "";
 $memberClassActive = "";
-
 
 if ($currentFileName == "home.php") {
 	$indexClassActive = 'class = active';
@@ -32,7 +32,6 @@ if ($currentFileName == "home.php") {
 } elseif ($currentFileName == "members.php") {
 	$memberClassActive = 'class = active';
 }
-
 ?>
 
 <div class="row">
@@ -97,8 +96,17 @@ if ($currentFileName == "home.php") {
 						</li>
 						<li class="divider"></li>
 						<li class="has-form">
-							<a href="login.php" class="button">Login</a>
-							<a href="logout.php" class="button small alert">Logout</a>
+							<?php			//Redirect the page back to login if session variable is not set
+							$user_check = $_SESSION['uname'];
+
+							if (!isset($user_check)) {
+
+								echo '<a href="login.php" class="button">Login</a>';
+							} else {
+
+								echo '<a href="logout.php" class="button small alert">Logout</a>';
+							}
+							?>
 						</li>
 
 						<li class="divider"></li>
