@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<?php
+<?php session_start();
 
 require_once dirname(__FILE__) . "/../../controller/sessionsController.php";
-
-//Start a session
-session_start();
 
 //Get username and password
 $getUsername = $_POST["username"];
@@ -19,6 +15,7 @@ if ($getUsername != null && $getPassword != null) {
 }
 ?>
 
+<!DOCTYPE html>
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">

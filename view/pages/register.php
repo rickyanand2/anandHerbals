@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<?php
-//Start a session
-session_start();
+<?php session_start();
 
 if (isset($_POST['submit'])) {
 	require_once dirname(__FILE__) . "/../../model/serverValidation.php";
@@ -23,11 +20,11 @@ if (isset($_POST['submit'])) {
 	// Call the function
 	$validate -> checkPostData($getRegUname, $getRegFname, $getRegLname, $getRegPass, $getRegCpass, $getRegEmail, $getRegaddress, $getRegComments, $getRegAgreement);
 	
-	$validationErrorMessage = $validate::$errorMessage;
-	$validationErrorCode = $validate::$errorCode;
+	$validationErrorMessage = ServerValidation::$errorMessage;
+	$validationErrorCode = ServerValidation::$errorCode;
 }
 ?>
-
+<!DOCTYPE html>
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
@@ -218,7 +215,7 @@ if (isset($_POST['submit'])) {
 						</div>
 
 						<div class="row">
-							<div class="small-8 small-centered  columns">
+							<div class="small-12 columns">
 								<!-- Display the terms and conditions -->
 								<textarea readonly="true"  class="smallFont">
 								
@@ -238,7 +235,7 @@ if (isset($_POST['submit'])) {
 						</div>
 
 						<div class="row">
-							<div class="small-8 small-centered  columns">
+							<div class="small-12  columns">
 
 								<input type="checkbox" id="agreement" name="agreement">
 								I accept the terms and conditions of Anand Consultancy Group.

@@ -20,13 +20,14 @@ class SessionsController extends ConnectionDatabase {
 
 		try {
 
+
+			//Connect to Mysql Database from parent class
+			parent::connectMyDatabase();
+
 			$loginArray = $this -> safeInjection($username, $password);
 
 			$username = $loginArray[0];
 			$password = $loginArray[1];
-
-			//Connect to Mysql Database from parent class
-			parent::connectMyDatabase();
 
 			$sql = 'SELECT * FROM users WHERE username=\'' . $username . '\' and password=\'' . $password . '\'';
 			$result = mysql_query($sql);
@@ -35,7 +36,6 @@ class SessionsController extends ConnectionDatabase {
 
 			if ($n == 1) {
 				//Values of these variable can now also be accessed by other local methods to this class
-				echo "Number of SQL rows selected: " . $n . "<br/>";
 				$this -> _username = $username;
 				$this -> _password = $password;
 
@@ -44,7 +44,6 @@ class SessionsController extends ConnectionDatabase {
 
 				//Get the SQL result as an array for sessions
 				$sessionArray = mysql_fetch_array($result);
-				print_r($sessionArray);
 				//Register the name value into a session
 				$_SESSION['uname'] = $sessionArray['username'];
 
@@ -94,9 +93,6 @@ class SessionsController extends ConnectionDatabase {
 		$extra = 'members.php';
 
 		header("Location: http://$host$uri/$extra");
-
-		//Echo "Location: http://$host$uri/$extra";
-
 		exit ;
 	}
 

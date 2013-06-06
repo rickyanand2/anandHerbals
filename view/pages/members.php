@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<?php
+<?php session_start();
 
-session_start();
 
 //Redirect the page back to login if session variable is not set
 $user_check = $_SESSION['uname'];
@@ -17,6 +15,7 @@ if (!isset($user_check)) {
 }
 ?>
 
+<!DOCTYPE html>
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
@@ -102,6 +101,7 @@ if (!isset($user_check)) {
 					<li>
 						<a href="#">BioGas</a>
 					</li>
+				<!--
 					<li>
 						<a href="#">Section 2</a>
 					</li>
@@ -117,6 +117,7 @@ if (!isset($user_check)) {
 					<li>
 						<a href="#">Section 6</a>
 					</li>
+				-->
 				</ul>
 
 				<p><img src="http://placehold.it/320x240&text=Ad" />

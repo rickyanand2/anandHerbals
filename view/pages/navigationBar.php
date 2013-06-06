@@ -1,7 +1,7 @@
 <!-- Page Navigation start -->
 
 <?php
-session_start();
+
 //inherit $currentFileName from the page this file is being called from
 
 $indexClassActive = "";

@@ -1,9 +1,5 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-<?php
-//Start a session
-session_start();
-
-?>
 
 <!--[if IE 8]>               <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->

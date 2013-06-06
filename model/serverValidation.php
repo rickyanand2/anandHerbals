@@ -88,7 +88,7 @@ class ServerValidation extends ConnectionDatabase {
 		if (!mysql_insert_id()) {
 			echo "Error: User not added to database.<BR/>";
 		} else {
-			echo "User $uname has been registered";
+			
 			// Redirect the User to login Page
 			$this -> redirectToRego();
 		}
